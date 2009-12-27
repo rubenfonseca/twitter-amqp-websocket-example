@@ -1,7 +1,6 @@
 require 'vendor/gems/environment'
 require 'em-websocket'
 require 'mq'
-require 'json'
 
 EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |ws|
   ws.onopen do
@@ -9,7 +8,7 @@ EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |ws|
 
     twitter = MQ.new
     twitter.queue('twitter').bind(twitter.fanout('twitter')).subscribe do |t|
-      ws.send Marshal.load(t).to_json
+      ws.send t
     end
   end
 
