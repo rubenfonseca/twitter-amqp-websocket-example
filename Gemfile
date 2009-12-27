@@ -1,0 +1,5 @@
+gem "amqp"
+gem "eventmachine"
+gem "em-websocket"
+gem "tweetstream"
+gem "json"
