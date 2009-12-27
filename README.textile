@@ -1,0 +1,26 @@
+h1. Twitter AMQP WebSocket Example
+
+Quick experiment of going from twitter to the browser, with no polling.
+
+It goes something like this:
+
+Twitter Stream -> Filter -> RabbitMQ -> AMQP -> EventMachine -> WebSocket -> HTML5 Browser
+
+Since it uses a fanout exchange on RabbitMQ, it allows to have multiple clients connected to the eventmachine loop and receive the same real-time updates.
+
+h2. Requirements
+
+* Ruby
+* RabbitMQ
+* gem install bundler
+
+h2. How To
+
+# gem bundle (first time, to install the dependencies)
+# rabbitmq-server # start rabbitmq
+# ruby twitterfeed.rb twitter_username twitter_password # start the filter
+# ruby socket.rb
+
+Then you can open client/index.html on a HTML5 WebSocket compatible browser (tested with Webkit nightly).
+
+Read the code, and have fun! :)
