@@ -7,7 +7,10 @@ EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |ws|
     puts "WebSocket opened"
 
     twitter = MQ.new
-    twitter.queue('twitter').bind(twitter.fanout('twitter')).subscribe do |t|
+
+    # randomize the queue name that binds to the fanout exchange so every
+    # websocket client (or clients that reload) get their own queue.
+    twitter.queue(rand(65000).to_s).bind(twitter.fanout('twitter')).subscribe do |t|
       ws.send t
     end
   end
