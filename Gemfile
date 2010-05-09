@@ -1,3 +1,5 @@
+source :gemcutter
+
 gem "amqp"
 gem "eventmachine"
 gem "em-websocket"
