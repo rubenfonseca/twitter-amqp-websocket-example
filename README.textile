@@ -16,7 +16,7 @@ h2. Requirements
 
 h2. How To
 
-# gem bundle (first time, to install the dependencies)
+# bundle install (first time, to install the dependencies)
 # rabbitmq-server # start rabbitmq
 # ruby twitterfeed.rb twitter_username twitter_password # start the filter
 # ruby socket.rb # on another shell
